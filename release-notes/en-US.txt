@@ -1,0 +1,4 @@
+What's New:
+- Initial release
+- Bug fixes and performance improvements
+
