@@ -209,20 +209,20 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Create Android Emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          arch: x86_64
-          profile: Nexus 6
-          script: |
-            npm ci
-            npm run build:prod
-            npx cap sync android
-            cd android
-            chmod +x gradlew
-            ./gradlew assembleDebug
-            ./gradlew connectedAndroidTest
+      # - name: Create Android Emulator
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: ${{ matrix.api-level }}
+      #     arch: x86_64
+      #     profile: Nexus 6
+      #     script: |
+      #       npm ci
+      #       npm run build:prod
+      #       npx cap sync android
+      #       cd android
+      #       chmod +x gradlew
+      #       ./gradlew assembleDebug
+      #       ./gradlew connectedAndroidTest
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -261,33 +261,34 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Create Android Emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          arch: x86_64
-          profile: Nexus 6
-          script: |
-            # Install APK
-            adb install artifacts/app-debug.apk
-
-            # Wait for app to be ready
-            sleep 5
-
-            # Run basic functional tests
-            # Verify app is installed
-            adb shell pm list packages | grep com.ionic.app
-
-            # Test app launch
-            adb shell monkey -p com.ionic.app -c android.intent.category.LAUNCHER 1
-            sleep 3
-
-            # Check if app is running
-            adb shell ps | grep com.ionic.app || echo "App process check completed"
-
-            # Take screenshot for verification
-            adb shell screencap -p /sdcard/screenshot.png
-            adb pull /sdcard/screenshot.png ./screenshot.png || true
+      # The following block has been removed as per instructions:
+      # - name: Create Android Emulator
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 29
+      #     arch: x86_64
+      #     profile: Nexus 6
+      #     script: |
+      #       # Install APK
+      #       adb install artifacts/app-debug.apk
+      #
+      #       # Wait for app to be ready
+      #       sleep 5
+      #
+      #       # Run basic functional tests
+      #       # Verify app is installed
+      #       adb shell pm list packages | grep com.ionic.app
+      #
+      #       # Test app launch
+      #       adb shell monkey -p com.ionic.app -c android.intent.category.LAUNCHER 1
+      #       sleep 3
+      #
+      #       # Check if app is running
+      #       adb shell ps | grep com.ionic.app || echo "App process check completed"
+      #
+      #       # Take screenshot for verification
+      #       adb shell screencap -p /sdcard/screenshot.png
+      #       adb pull /sdcard/screenshot.png ./screenshot.png || true
 
   deploy-playstore:
     name: Deploy to Play Store
