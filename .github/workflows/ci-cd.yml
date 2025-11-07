@@ -327,7 +327,7 @@ jobs:
           status: completed
           inAppUpdatePriority: 2
           whatsNewDirectory: ./release-notes
-          mappingFile: ./android/app/build/outputs/mapping/release/mapping.txt
+          debug: true
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
