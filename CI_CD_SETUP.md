@@ -70,7 +70,7 @@ This guide will help you set up the CI/CD pipeline for automated testing, buildi
 
 ### 3.1 Update Package Name (if needed)
 
-If your app package name differs from `com.ionic.app`, update it in:
+If your app package name differs from `com.ionicagemiro.app`, update it in:
 
 - `capacitor.config.ts`: Update `appId`
 - `.github/workflows/ci-cd.yml`: Update `packageName` in the deploy step

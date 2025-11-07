@@ -17,7 +17,7 @@ env:
   NODE_VERSION: '20.x'
   JAVA_VERSION: '17'
   ANDROID_SDK_VERSION: '9477386'
-  ANDROID_BUILD_TOOLS: '34.0.0'
+  ANDROID_BUILD_TOOLS: '35.0.0'
 
 jobs:
   lint:
@@ -277,14 +277,14 @@ jobs:
       #
       #       # Run basic functional tests
       #       # Verify app is installed
-      #       adb shell pm list packages | grep com.ionic.app
+      #       adb shell pm list packages | grep com.ionicagemiro.app
       #
       #       # Test app launch
-      #       adb shell monkey -p com.ionic.app -c android.intent.category.LAUNCHER 1
+      #       adb shell monkey -p com.ionicagemiro.app -c android.intent.category.LAUNCHER 1
       #       sleep 3
       #
       #       # Check if app is running
-      #       adb shell ps | grep com.ionic.app || echo "App process check completed"
+      #       adb shell ps | grep com.ionicagemiro.app || echo "App process check completed"
       #
       #       # Take screenshot for verification
       #       adb shell screencap -p /sdcard/screenshot.png
@@ -321,7 +321,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.ionic.app
+          packageName: com.ionicagemiro.app
           releaseFiles: artifacts/app-release.aab
           track: internal
           status: completed

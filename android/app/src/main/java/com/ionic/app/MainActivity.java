@@ -1,4 +1,4 @@
-package com.ionic.app;
+package com.ionicagemiro.app;
 
 import com.getcapacitor.BridgeActivity;
 
