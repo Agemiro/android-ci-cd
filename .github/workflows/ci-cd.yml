@@ -290,49 +290,51 @@ jobs:
       #       adb shell screencap -p /sdcard/screenshot.png
       #       adb pull /sdcard/screenshot.png ./screenshot.png || true
 
-  deploy-playstore:
-    name: Deploy to Play Store
-    runs-on: ubuntu-latest
-    needs: [build, instrumentation-tests, functional-tests]
-    if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_to_playstore == 'true')
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  # The entire Deploy to Play Store job is commented out as per instructions
 
-      - name: Download AAB artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: app-release-aab
-          path: ./artifacts
-
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: ${{ env.JAVA_VERSION }}
-
-      - name: Decode Google Play Service Account JSON
-        run: |
-          echo "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}" > $HOME/google-play-service-account.json
-
-      - name: Deploy to Play Store Internal Testing
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: com.ionicagemiro.app
-          releaseFiles: artifacts/app-release.aab
-          track: internal
-          status: completed
-          inAppUpdatePriority: 2
-          whatsNewDirectory: ./release-notes
-          debug: true
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          files: artifacts/app-release.aab
-          draft: false
-          prerelease: false
+  # deploy-playstore:
+  #   name: Deploy to Play Store
+  #   runs-on: ubuntu-latest
+  #   needs: [build, instrumentation-tests, functional-tests]
+  #   if: |
+  #     (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+  #     (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_to_playstore == 'true')
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Download AAB artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: app-release-aab
+  #         path: ./artifacts
+  #
+  #     - name: Setup Java
+  #       uses: actions/setup-java@v4
+  #       with:
+  #         distribution: 'temurin'
+  #         java-version: ${{ env.JAVA_VERSION }}
+  #
+  #     - name: Decode Google Play Service Account JSON
+  #       run: |
+  #         echo "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}" > $HOME/google-play-service-account.json
+  #
+  #     - name: Deploy to Play Store Internal Testing
+  #       uses: r0adkll/upload-google-play@v1
+  #       with:
+  #         serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+  #         packageName: com.ionicagemiro.app
+  #         releaseFiles: artifacts/app-release.aab
+  #         track: internal
+  #         status: completed
+  #         inAppUpdatePriority: 2
+  #         whatsNewDirectory: ./release-notes
+  #         debug: true
+  #
+  #     - name: Create GitHub Release
+  #       uses: softprops/action-gh-release@v1
+  #       if: startsWith(github.ref, 'refs/tags/')
+  #       with:
+  #         files: artifacts/app-release.aab
+  #         draft: false
+  #         prerelease: false
