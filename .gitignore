@@ -60,3 +60,13 @@ logs
 *.tgz
 *.tar.gz
 
+# Android signing keys (NEVER commit these!)
+*.jks
+*.keystore
+*.p12
+*.p8
+keystore.properties
+release.keystore
+release-key.jks
+my-release-key.jks
+

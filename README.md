@@ -146,7 +146,7 @@ See [`.github/workflows/README.md`](.github/workflows/README.md) for detailed do
 ## Notes
 
 - The web assets directory is `www` (configured in `capacitor.config.ts`)
-- App ID: `com.ionic.app`
+- App ID: `com.ionicagemiro.app`
 - App Name: `ionic-app`
 
 You can modify these in `capacitor.config.ts` if needed.
