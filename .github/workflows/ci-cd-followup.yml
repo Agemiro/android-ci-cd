@@ -1,0 +1,19 @@
+name: CI/CD Follow-up
+
+on:
+  workflow_run:
+    workflows: ['CI/CD Pipeline']
+    types:
+      - completed
+
+jobs:
+  post-ci-tasks:
+    name: Run After Primary Pipeline
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log completion
+        run: echo "Primary CI/CD pipeline completed successfully. Running follow-up tasks."
