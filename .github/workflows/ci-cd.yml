@@ -1,7 +1,7 @@
 name: CI/CD Pipeline-3.0
 
 on:
-  push:
+  pull_request:
     branches: [workflow-test]
 
   # workflow_dispatch:
