@@ -2,7 +2,7 @@ name: CI/CD Pipeline-
 
 on:
   push:
-    branches: [workflow-test]
+    branches: [main, workflow-test]
 
   # workflow_dispatch:
   #   inputs:
