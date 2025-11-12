@@ -1,4 +1,4 @@
-name: CI/CD Follow-up-
+name: CI/CD Follow-up
 
 on:
   workflow_run:
@@ -16,4 +16,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Log completion
-        run: echo "Primary CI/CD pipeline completed successfully. Running follow-up tasks..."
+        run: echo "Primary CI/CD pipeline completed successfully. Running follow-up tasks."
