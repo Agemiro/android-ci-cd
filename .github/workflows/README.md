@@ -21,7 +21,7 @@ This comprehensive CI/CD pipeline includes the following stages:
 
 - Runs ESLint with detailed reporting
 - Performs TypeScript type checking
-- Checks for security vulnerabilities with npm audit
+- Checks for security vulnerabilities with npm audit.
 
 ### 4. Build
 
