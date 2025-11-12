@@ -1,10 +1,10 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline-2
 
 on:
   push:
-    branches: [main, second-workflow]
+    branches: [workflow-test]
   pull_request:
-    branches: [main, second-workflow]
+    branches: [workflow-test]
   # workflow_dispatch:
   #   inputs:
   #     deploy_to_playstore:
