@@ -15,7 +15,7 @@ This comprehensive CI/CD pipeline includes the following stages:
 
 - Executes Jasmine/Karma unit tests
 - Generates code coverage reports
-- Uploads coverage to Codecov
+- Uploads coverage to Codecov.
 
 ### 3. Static Code Analysis
 
