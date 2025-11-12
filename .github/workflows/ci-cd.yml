@@ -1,17 +1,17 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline-2
 
 on:
   push:
-    branches: [main, develop]
+    branches: [workflow-test]
   pull_request:
-    branches: [main, develop]
-  workflow_dispatch:
-    inputs:
-      deploy_to_playstore:
-        description: 'Deploy to Play Store'
-        required: false
-        default: 'false'
-        type: boolean
+    branches: [workflow-test]
+  # workflow_dispatch:
+  #   inputs:
+  #     deploy_to_playstore:
+  #       description: 'Deploy to Play Store'
+  #       required: false
+  #       default: 'false'
+  #       type: boolean
 
 env:
   NODE_VERSION: '20.x'
