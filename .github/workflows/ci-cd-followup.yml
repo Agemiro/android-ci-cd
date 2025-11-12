@@ -1,4 +1,4 @@
-name: CI/CD Follow-up-
+name: CI/CD Follow-up
 
 on:
   workflow_run:
