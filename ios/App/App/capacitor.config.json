@@ -1,0 +1,9 @@
+{
+	"appId": "com.ionicagemiro.app",
+	"appName": "ionic-app",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https"
+	},
+	"packageClassList": []
+}
